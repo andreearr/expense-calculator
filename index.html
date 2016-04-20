@@ -1,0 +1,210 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--       -->
+  <title>Expense Calculator</title>
+  <meta name="description" content="Expense Calculator">
+  <meta name="author" content="Expense Calculator">
+
+<!-- Loading chartist library, both CSS and JavaScript files-->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+<!-- Loading Google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <style>
+    ul.topnav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    ul.topnav li {float: left;}
+
+    ul.topnav li a {
+      display: inline-block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    ul.topnav li a:hover {background-color: #111;}
+
+    ul.topnav li.icon {display: none;}
+
+    @media screen and (max-width:680px) {
+      ul.topnav li:not(:first-child) {display: none;}
+      ul.topnav li.icon {
+        float: right;
+        display: inline-block;
+      }
+    }
+
+    @media screen and (max-width:680px) {
+      ul.topnav.responsive {position: relative;}
+      ul.topnav.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      ul.topnav.responsive li {
+        float: none;
+        display: inline;
+      }
+      ul.topnav.responsive li a {
+        display: block;
+        text-align: left;
+      }
+    }
+    	body {
+      margin:0;
+  		font-family: 'Poiret One', cursive;
+  		background: #F6F6C2;
+  		color: dimgray;
+  		text-align: left;
+  		padding-left: 100px;
+  		padding-right: 100px;
+      font-size: 20px
+  	}
+  	#list {
+  		float: left;
+  		width: 400px;
+  	}
+  	#chart {
+  		float: left;
+  		height: 400px;
+  		width: 400px;
+  	}
+    #footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    color: #a6a6a6;
+    }
+  	/* CSS for text inside chart; text tag will be used inside the chart*/
+    text {
+  		fill: black !important;
+  		font-size: 20px !important;
+  	}
+    
+  </style>
+</head>
+
+<body>
+  <!-- Creating fixed top navigation menu -->
+  <ul class="topnav">
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  <li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="menuFun()">☰</a>
+  </li>
+</ul>
+
+  <h1>Expense Calculator</h1>
+    <p>Visualize your expenses by category</p>
+  <hr> 
+  <form style="display:inline;">
+	<!-- Creating the pre-defined categories-->
+	  Category: <select name="cat">
+	  	<option id="clothes">clothes</option>
+	  	  <option id="food">food</option>
+         <option id="transport">transport</option>
+          <option id="others">others</option>
+	  	</select>
+	  	  Item Name: <input type="text" name="name">
+	  	  Price: <input type="number" name="price" size="5">
+  </form>
+  	<button onCLick="doChart()">Add</button>
+	  <button onCLick="resetChart();">Reset</button>
+
+	  <hr>
+ 
+  <div id="chart"></div>
+   <ul id="list"></ul><br>
+ <div id="total"></div><br>
+ <div id="footer">
+    "Expense Calculator" is a project created by Andreea Raducanu. &copy; 2016.
+</div>    
+  <script>
+function menuFun() {
+    document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
+}
+ var productObject = {};
+/* Define function to reset chart */
+ function resetChart() {
+     productObject = {};
+     document.getElementById('list').innerHTML = '';
+     document.getElementById('chart').innerHTML = '';
+     document.getElementById('total').innerHTML = '';
+ }
+ 
+/* Define function to create chart */
+
+ function doChart() {
+     var productCategory = [];
+     var productPrice = [];
+     var total = 0;
+     var cat = document.forms[0].cat.value;
+
+/* Validation of form */
+      if (document.forms[0].name.value == '') {
+         alert('Please insert a non-null item name!')
+         return;
+      }
+      if (document.forms[0].price.value == ''){
+        alert('Please insert a non-null price!')
+        return;
+      }
+      if (document.forms[0].price.value <= 0) {
+         alert('Please insert a non-negative price value!')
+         return;
+      }
+    
+/* If the category does not exist in productObject, it is created with price=0, and added */
+     if (!productObject[cat]) {
+         productObject[cat] = 0;
+     }
+/* Price is transformed in integer */  
+     productObject[cat] += parseInt(document.forms[0].price.value);
+
+/* Creating product category and product price arrays, required by chartist library for chart */ 
+     for (var cat in productObject) {
+         productCategory.push(cat);
+         productPrice.push(productObject[cat]);
+         total += productObject[cat];
+     }
+
+    var data = {
+         labels: productCategory,
+         series: productPrice
+     };
+/* Drawing the chart using the created arrays*/  
+     new Chartist.Pie('#chart', data);
+  
+/* Adding the list elements*/
+     document.getElementById('list').innerHTML += '<li>' 
+            + cat + ' - ' 
+            + document.forms[0].name.value 
+            + ', ' + document.forms[0].price.value;
+
+/* Computing the total price*/
+     document.getElementById('total').innerHTML = 'Total: ' + total;
+
+ 
+ }
+
+  </script>
+
+
+</body>
+</html>
