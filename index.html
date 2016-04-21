@@ -162,9 +162,9 @@ function menuFun() {
          return;
       }
       if (document.forms[0].price.value == ''  || document.forms[0].price.value <= 0){
-        alert('Please insert a numeric value for the price!')
+        alert('Please insert an appropriate value for the price!')
         return;
-     
+      }
     
 /* If the category does not exist in productObject, it is created with price=0, and added */
      if (!productObject[cat]) {
