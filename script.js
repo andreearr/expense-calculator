@@ -57,6 +57,8 @@ function menuFun() {
 
 /* Computing the total price*/
      document.getElementById('total').innerHTML = 'Total: ' + total;
-
+     document.forms[0].price.value = '';
+      document.forms[0].name.value = '';
+ 
  
  }
