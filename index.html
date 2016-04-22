@@ -31,8 +31,8 @@
 <div class="menu">
 <ul class="topnav">
   <li><a class="active" href="index.html">Home</a></li>
-  <li><a href="contact.html">Contact</a></li>
-  <li><a href="about.html">About</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="menuFun()">☰</a>
   </li>
@@ -45,24 +45,24 @@
 
 
   <div class="calculator">
-  <p>chs chbsbdc hsbjshbcs jh</p>
+  <p>Pick a category, enter your items and prices, click <i>Add</i> and start creating your expenses chart!</p>
   <form style="display:inline;">
-	<!-- Creating the pre-defined categories-->
-	  Category: <select name="cat">
-	  	<option id="clothes">clothes</option>
-	  	 <option id="food">food</option>
-         	   <option id="transport">transport</option>
-         	    <option id="furniture">furniture</option>
-         	     <option id="electronic devices">electronic devices</option>
-         	      <option id="leisure activities">leisure activities</option>
+  <!-- Creating the pre-defined categories-->
+    Category: <select name="cat">
+      <option id="clothes">clothes</option>
+       <option id="food">food</option>
+             <option id="transport">transport</option>
+              <option id="furniture">furniture</option>
+               <option id="electronic devices">electronic devices</option>
+                <option id="leisure activities">leisure activities</option>
                        <option id="others">others</option>
-	  	</select>
-	  	  Item Name: <input type="text" name="name">
-	  	  Price: <input type="number" name="price" size="5">
+      </select>
+        Item: <input type="text" name="name">
+        Price: <input type="number" name="price" size="5">
   </form>
-  	<button onCLick="doChart()">Add</button>
-	  <button onCLick="resetChart();">Reset</button>
-	
+    <button class="button" onCLick="doChart()">Add</button>
+    <button class="button" onCLick="resetChart();">Reset</button>
+  
   </div>
  
   <div id="chart"></div>

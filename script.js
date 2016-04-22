@@ -18,14 +18,26 @@ function menuFun() {
      var total = 0;
      var cat = document.forms[0].cat.value;
 
-/* Validation of form */
+/* Validation of forms */
       if (document.forms[0].name.value == '') {
-         alert('Please insert a non-null item name!')
+         alert('Please insert an item name!')
          return;
       }
       if (document.forms[0].price.value == ''  || document.forms[0].price.value <= 0){
         alert('Please insert an appropriate value for the price!')
         return;
+      }
+      if (document.forms[1].firstname.value == '') {
+         alert('Please insert your first name!')
+         return;
+      }
+      if (document.forms[1].lastname.value == '') {
+         alert('Please insert your last name!')
+         return;
+      }
+      if (document.forms[1].message.value == '') {
+         alert('Don\'t forget to type the message!')
+         return;
       }
     
 /* If the category does not exist in productObject, it is created with price=0, and added */

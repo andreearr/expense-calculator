@@ -4,16 +4,22 @@
        background-image: url('background.png');
       color: black;
       text-align: left;
-      font-size: 20px
+      font-size: 17px
     }
 
 
- button {
-  color: red;
+ .button {
   background-color: white;
-  border: 1px solid black;
+  color: black;
+  border: 2px solid #555555;
   border-radius: 5px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
  }
+ .button:hover {
+    background-color: #555555;
+    color: white;
+}
 .calculator {
 
   text-align: center;
@@ -30,10 +36,10 @@
   background-color: black;
 }
 .content{
-  font-family: sans-serif;
-  font-weight: bolder;
+  font-family: 'Poiret One', cursive;
   width: 900px;
   margin: auto;
+  font-weight: bolder;
 }
 @media screen and (max-width: 900px) {
 .content{
@@ -68,25 +74,25 @@ ul.topnav {
       font-size: 17px;
     }
 
-    ul.topnav li a:hover {background-color: #111;}
+    ul.topnav li a:hover {background-color: dimgray;}
 
     ul.topnav li.icon {display: none;}
 
 
 
 
-  	#list {
-  		float: left;
-  		width: 400px;
-  	}
-  	#chart {
-  		float: left;
-  		height: 300px;
-  		width: 400px;
-  	}
+    #list {
+      float: left;
+      width: 400px;
+    }
+    #chart {
+      float: left;
+      height: 300px;
+      width: 400px;
+    }
 
-  	/* CSS for text inside chart; text tag will be used inside the chart*/
+    /* CSS for text inside chart; text tag will be used inside the chart*/
     text {
-  		fill: black !important;
-  		font-size: 20px !important;
-  	}
+      fill: black !important;
+      font-size: 20px !important;
+    }
