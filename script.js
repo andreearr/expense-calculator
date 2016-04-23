@@ -11,6 +11,22 @@ function menuFun() {
  }
  
 /* Define function to create chart */
+ function sendMail(){
+    if (document.forms.contact.firstname.value == '') {
+         alert('Please insert your first name!')
+         return false;
+      }
+      if (document.forms.contact.lastname.value == '') {
+         alert('Please insert your last name!')
+         return false;
+      }
+      if (document.forms.contact.message.value == '') {
+         alert('Don\'t forget to type the message!')
+         return dalse;
+      }
+     
+ }
+
 
  function doChart() {
      var productCategory = [];
@@ -27,19 +43,7 @@ function menuFun() {
         alert('Please insert an appropriate value for the price!')
         return;
       }
-      if (document.forms[1].firstname.value == '') {
-         alert('Please insert your first name!')
-         return;
-      }
-      if (document.forms[1].lastname.value == '') {
-         alert('Please insert your last name!')
-         return;
-      }
-      if (document.forms[1].message.value == '') {
-         alert('Don\'t forget to type the message!')
-         return;
-      }
-    
+     
 /* If the category does not exist in productObject, it is created with price=0, and added */
      if (!productObject[cat]) {
          productObject[cat] = 0;
