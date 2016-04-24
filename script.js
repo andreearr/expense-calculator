@@ -11,7 +11,7 @@ function menuFun() {
  }
  
 /* Define function to create chart */
- function sendMail(){
+ function validate(){
     if (document.forms.contact.firstname.value == '') {
          alert('Please insert your first name!')
          return false;
@@ -20,10 +20,15 @@ function menuFun() {
          alert('Please insert your last name!')
          return false;
       }
+      if(document.forms.contact.useful.value == '') {
+         alert('Please answer the question!')
+         return false;
+      }
       if (document.forms.contact.message.value == '') {
          alert('Don\'t forget to type the message!')
-         return dalse;
+         return false;
       }
+    
      
  }
 
