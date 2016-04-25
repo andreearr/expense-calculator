@@ -1,7 +1,5 @@
-function menuFun() {
-    document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
-}
  var productObject = {};
+
 /* Define function to reset chart */
  function resetChart() {
      productObject = {};
@@ -10,7 +8,6 @@ function menuFun() {
      document.getElementById('total').innerHTML = '';
  }
  
-/* Define function to create chart */
  function validate(){
     if (document.forms.contact.firstname.value == '') {
          alert('Please insert your first name!')
@@ -28,10 +25,15 @@ function menuFun() {
          alert('Don\'t forget to type the message!')
          return false;
       }
-    
-     
+    alert('Thank you for your message, ' + document.forms.contact.firstname.value + '!');
+
+    document.forms.contact.firstname.value ='';
+    document.forms.contact.lastname.value = ''; 
+    document.forms.contact.useful.value = '';
+    document.forms.contact.message.value = '';
  }
 
+/* Define function to create chart */
 
  function doChart() {
      var productCategory = [];
